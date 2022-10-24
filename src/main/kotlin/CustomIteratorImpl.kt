@@ -36,6 +36,17 @@ fun <T, R> Iterator<T>.map(
     return list.toList()
 }
 
+fun <T> Iterator<T>.reduce(
+    acc: (T, T) -> T,
+    start: T
+): T {
+    var temporal: T = start
+    for (ele in this) {
+        temporal = acc(start, ele)
+    }
+    return temporal
+}
+
 
 
 fun main() {
@@ -47,9 +58,17 @@ fun main() {
 
     val iter2 = CustomIteratorImpl()
     val iter3 = CustomIteratorImpl()
+    val iter4 = CustomIteratorImpl()
 
     val test = iter2.map { it * 2 }
     println(test)
     val test2 = iter3.customFilter { it % 2 == 1 }
     println(test2)
+
+    val add = { a: Int, b: Int -> a + b }
+    val test3 = iter4.reduce(
+        acc = add,
+        start = 0
+    )
+    println(test3)
 }
