@@ -42,7 +42,8 @@ fun <T> Iterator<T>.reduce(
 ): T {
     var temporal: T = start
     for (ele in this) {
-        temporal = acc(start, ele)
+        println("eval: $ele")
+        temporal = acc(temporal, ele)
     }
     return temporal
 }
