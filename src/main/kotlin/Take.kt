@@ -5,7 +5,6 @@ fun <T> Iterator<T>.take(limit: Int): List<T> {
         if (result.size == limit) return result
         result.add(ele)
     }
-    lazy {  }
     return result
 }
 
